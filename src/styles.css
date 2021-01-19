@@ -51,6 +51,10 @@ ul {
   line-height: 3;
 }
 
+a {
+  text-decoration: none;
+}
+
 .current-location-button {
   border-radius: 20px;
 }
