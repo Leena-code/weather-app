@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Weather App</title>
+  <meta charset="UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/f6b4137ee2.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="weather-app">
+      <form id="search-form">
+        <div class="row">
+          <div class="col-7">
+            <input type="search" placeholder="Search city" class="form-control" autocomplete="off" id="search-city"/>
+          </div>
+          <div class="col-2">
+            <input type="submit" value="🔎" class="form-control" />
+          </div>
+          <di class="col-3">
+            <button type="button" class="btn btn-success current-location-button">
+              Current Location
+            </button>
+
+          </di>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-6">
+          <h1>
+            Zurich, Switzerland
+          </h1>
+          <h2>
+            <div class="day">
+            Tuesday
+            </div>
+            <div class="date">
+            29.12.2020
+            </div>
+          </h2>
+        </div>
+        <div class="col-6">
+          <h3>
+            <div class="temperature">
+              5 °C
+            </div>
+            <div id="description">
+              cloudy
+            </div>
+          </h3>
+        </div>
+      </div>
+      <p>
+      <div class="today">
+        <div class="row">
+          <div class="col-2">
+            Morning
+            <ul>
+              <li>
+                <i class="far fa-snowflake snowflake-icon"></i>
+              </li>
+              <li>
+                0 °C
+              </li>
+            </ul>
+          </div>
+          <div class="col-2">
+            Noon
+            <ul>
+              <li>
+                <i class="fas fa-cloud-sun cloud-sun-icon"></i>
+              </li>
+              <li>
+                7 °C
+              </li>
+            </ul>
+          </div>
+          <div class="col-2">
+            Afternoon
+            <ul>
+              <li>
+                <i class="fas fa-cloud-rain rain-icon"></i>
+              </li>
+              <li>
+                5 °C
+              </li>
+            </ul>
+          </div>
+          <div class="col-2">
+            Evening
+            <ul>
+              <li>
+                <i class="far fa-snowflake snowflake-icon"></i>
+              </li>
+              <li>
+                3 °C
+              </li>
+            </ul>
+          </div>
+          <div class="col-2">
+            Overnight
+            <ul>
+              <li>
+                <i class="far fa-snowflake snowflake-icon"></i>
+              </li>
+              <li>
+                1 °C
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </p>
+      <p>
+      <div class="forecast">
+        Forecast
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          Wed, 30.12.2020
+        </div>
+        <div class="col">
+          <i class="far fa-snowflake snowflake-icon"></i>
+        </div>
+        <div class="col">
+          5 °C
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          Thu, 31.12.2020
+        </div>
+        <div class="col">
+          <i class="fas fa-cloud-sun cloud-sun-icon"></i>
+        </div>
+        <div class="col">
+          2 °C
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          Fri, 01.01.2021
+        </div>
+        <div class="col">
+          <i class="fas fa-sun sun-icon"></i>
+        </div>
+        <div class="col">
+          4 °C
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          Sat, 02.01.2021
+        </div>
+        <div class="col">
+          <i class="fas fa-sun sun-icon"></i>
+        </div>
+        <div class="col">
+          6 °C
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          Sun, 03.01.2021
+        </div>
+        <div class="col">
+          <i class="far fa-snowflake snowflake-icon"></i>
+        </div>
+        <div class="col">
+          -1 °C
+        </div>
+      </div>
+      </p>
+    </div>
+  </div>
+
+  <script src="src/index.js"></script>
+</body>
+
+</html>

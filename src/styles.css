@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  margin: 70px 0 20px 0;
+}
+
+h2 {
+  color: grey;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+h3 {
+  color: #5a6275;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px 0 20px 0;
+}
+
+h3 .temperature {
+  color: #596aca;
+  font-size: 90px;
+}
+
+.weather-app {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 50px;
+  max-width: 800px;
+}
+
+.today {
+  margin: 60px 0 50px 70px;
+  font-size: 20px;
+  color: #5b6376;
+  font-weight: bolder;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 3;
+}
+
+.current-location-button {
+  border-radius: 20px;
+}
+
+.sun-icon {
+  color: orange;
+  font-size: 20px;
+}
+
+.snowflake-icon {
+  color: turquoise;
+  font-size: 20px;
+}
+
+.cloud-sun-icon {
+  color: lightslategray;
+  font-size: 20px;
+}
+
+.rain-icon {
+  color: darkblue;
+  font-size: 20px;
+}
+
+.forecast {
+  color: #596aca;
+  font-weight: bold;
+  font-size: 25px;
+}
