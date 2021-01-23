@@ -12,184 +12,182 @@
 </head>
 <body>
   <div class="container">
-    <div class="weather-app">
-      <form id="search-form">
+    <div class="weather-app-wrapper">
+      <div class="weather-app">
+        <form id="search-form">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4 search-box">
+              <input type="search" placeholder="Search city" class="form-control search" autocomplete="off" id="search-city"/>
+            </div>
+            <div class="col-2 submit-box">
+              <input type="submit" value="🔎" class="form-control submit" />
+            </div>
+            </form>
+            <div class="col-3">
+              <button type="button" class="btn btn-success current-location-button">
+                Current Location
+              </button>
+            </div>
+          </div>        
         <div class="row">
-          <div class="col-7">
-            <input type="search" placeholder="Search city" class="form-control" autocomplete="off" id="search-city"/>
+          <div class="col-6">
+            <h1>
+              Zurich, Switzerland
+            </h1>
+            <h2>
+              <div class="day">
+                Tuesday
+              </div>
+              <div class="date">
+                29.12.2020
+              </div>
+            </h2>
           </div>
-          <div class="col-2">
-            <input type="submit" value="🔎" class="form-control" />
-          </div>
-          <div class="col-3">
-            <button type="button" class="btn btn-success current-location-button">
-              Current Location
-            </button>
+          <div class="col-6">
+            <h3>
+              <div class="temperature">
+                5 °C
+              </div>
+              <div id="description">
+                cloudy
+              </div>
+            </h3>
           </div>
         </div>
-      </form>
-      <div class="row">
-        <div class="col-6">
-          <h1>
-            Zurich, Switzerland
-          </h1>
-          <h2>
-            <div class="day">
-              Tuesday
+        <p>
+          <div class="today">
+            <div class="row">
+              <div class="col-2">
+                Morning
+                <ul>
+                  <li>
+                    <i class="far fa-snowflake snowflake-icon"></i>
+                  </li>
+                  <li>
+                    0 °C
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2">
+                Noon
+                <ul>
+                  <li>
+                    <i class="fas fa-cloud-sun cloud-sun-icon"></i>
+                  </li>
+                  <li>
+                    7 °C
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2">
+                Afternoon
+                <ul>
+                  <li>
+                    <i class="fas fa-cloud-rain rain-icon"></i>
+                  </li>
+                  <li>
+                    5 °C
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2">
+                Evening
+                <ul>
+                  <li>
+                    <i class="far fa-snowflake snowflake-icon"></i>
+                  </li>
+                  <li>
+                    3 °C
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2">
+                Overnight
+                <ul>
+                  <li>
+                    <i class="far fa-snowflake snowflake-icon"></i>
+                  </li>
+                  <li>
+                    1 °C
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div class="date">
-              29.12.2020
+          </div>
+        </p>
+        <p>
+          <div class="forecast">
+            Forecast
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col">
+              Wed, 30.12.2020
             </div>
-          </h2>
-        </div>
-        <div class="col-6">
-          <h3>
-            <div class="temperature">
+            <div class="col">
+              <i class="far fa-snowflake snowflake-icon"></i>
+            </div>
+            <div class="col">
               5 °C
             </div>
-            <div id="description">
-              cloudy
-            </div>
-          </h3>
-        </div>
-      </div>
-      <p>
-        <div class="today">
+          </div>
+          <hr />
           <div class="row">
-            <div class="col-2">
-              Morning
-              <ul>
-                <li>
-                  <i class="far fa-snowflake snowflake-icon"></i>
-                </li>
-                <li>
-                  0 °C
-                </li>
-              </ul>
+            <div class="col">
+              Thu, 31.12.2020
             </div>
-            <div class="col-2">
-              Noon
-              <ul>
-                <li>
-                  <i class="fas fa-cloud-sun cloud-sun-icon"></i>
-                </li>
-                <li>
-                  7 °C
-                </li>
-              </ul>
+            <div class="col">
+              <i class="fas fa-cloud-sun cloud-sun-icon"></i>
             </div>
-            <div class="col-2">
-              Afternoon
-              <ul>
-                <li>
-                  <i class="fas fa-cloud-rain rain-icon"></i>
-                </li>
-                <li>
-                  5 °C
-                </li>
-              </ul>
-            </div>
-            <div class="col-2">
-              Evening
-              <ul>
-                <li>
-                  <i class="far fa-snowflake snowflake-icon"></i>
-                </li>
-                <li>
-                  3 °C
-                </li>
-              </ul>
-            </div>
-            <div class="col-2">
-              Overnight
-              <ul>
-                <li>
-                  <i class="far fa-snowflake snowflake-icon"></i>
-                </li>
-                <li>
-                  1 °C
-                </li>
-              </ul>
+            <div class="col">
+              2 °C
             </div>
           </div>
-        </div>
-      </p>
-      <p>
-        <div class="forecast">
-          Forecast
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            Wed, 30.12.2020
+          <hr />
+          <div class="row">
+            <div class="col">
+              Fri, 01.01.2021
+            </div>
+            <div class="col">
+              <i class="fas fa-sun sun-icon"></i>
+            </div>
+            <div class="col">
+              4 °C
+            </div>
           </div>
-          <div class="col">
-            <i class="far fa-snowflake snowflake-icon"></i>
+          <hr />
+          <div class="row">
+            <div class="col">
+              Sat, 02.01.2021
+            </div>
+            <div class="col">
+              <i class="fas fa-sun sun-icon"></i>
+            </div>
+            <div class="col">
+              6 °C
+            </div>
           </div>
-          <div class="col">
-            5 °C
+          <hr />
+          <div class="row">
+            <div class="col">
+              Sun, 03.01.2021
+            </div>
+            <div class="col">
+              <i class="far fa-snowflake snowflake-icon"></i>
+            </div>
+            <div class="col">
+              -1 °C
+            </div>
           </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            Thu, 31.12.2020
-          </div>
-          <div class="col">
-            <i class="fas fa-cloud-sun cloud-sun-icon"></i>
-          </div>
-          <div class="col">
-            2 °C
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            Fri, 01.01.2021
-          </div>
-          <div class="col">
-            <i class="fas fa-sun sun-icon"></i>
-          </div>
-          <div class="col">
-            4 °C
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            Sat, 02.01.2021
-          </div>
-          <div class="col">
-            <i class="fas fa-sun sun-icon"></i>
-          </div>
-          <div class="col">
-            6 °C
-          </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col">
-            Sun, 03.01.2021
-          </div>
-          <div class="col">
-            <i class="far fa-snowflake snowflake-icon"></i>
-          </div>
-          <div class="col">
-            -1 °C
-          </div>
-        </div>
-      </p>
-      <br />
-      <div class="row">
-        <div class="col source">
-         <small>
-          <a href="https://github.com/Leena-code/weather-app" target="_blank">
-            Open-source code
-          </a>
-           by Natalie Lee
-         </small>
-        </div>
+        </p>
       </div>
+      <small>
+        <a href="https://github.com/Leena-code/weather-app" target="_blank">
+          Open-source code
+        </a>
+        by Natalie Lee
+      </small>
     </div>
   </div>
 
