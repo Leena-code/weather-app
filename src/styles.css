@@ -88,6 +88,9 @@ form .form-control:focus {
   border-radius: 20px;
   background-color: #008891;
 }
+.current-location-button:hover {
+  background-color: #00587a;
+}
 
 .today {
   margin: 60px 70px;
