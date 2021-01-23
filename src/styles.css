@@ -40,10 +40,13 @@ a {
 }
 
 form .form-control:focus {
-  border-color: #ced4da;
+  border-color: #0f3057;
   box-shadow: none;
 }
 
+button:focus {
+  outline: none;
+}
 .weather-app-wrapper {
   max-width: 800px;
   margin: 20px auto 40px;
@@ -61,6 +64,7 @@ form .form-control:focus {
 
 .search-box {
   padding-right: 0;
+  margin-left: auto;
 }
 
 .search {
@@ -84,12 +88,28 @@ form .form-control:focus {
   border-radius: 0px 4px 4px 0px;
 }
 
-.current-location-button {
-  border-radius: 20px;
+current-location-button {
+  display: inline-block;
+  color: white;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  border-radius: 30px;
   background-color: #008891;
+  border-color: #008891;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  font-size: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.current-location-button:hover {
+
+current-location-button:hover {
   background-color: #00587a;
+  border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .today {

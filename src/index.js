@@ -70,7 +70,7 @@ function showPosition(position) {
   axios.get(apiUrl).then(showCurrentLocation);
 }
 
-let currentLocationButton = document.querySelector(".current-location-button");
+let currentLocationButton = document.querySelector("current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 
