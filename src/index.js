@@ -29,6 +29,19 @@ function formatDate(todaysDate) {
 
 document.querySelector(".date").innerHTML = formatDate(currentDate);
 
+function formatDays(timestamp){
+  let currentDate = new Date(timestamp);
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let currentDay = days[currentDate.getDay()];
+
+  let currentYear = currentDate.getFullYear();
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"];
+  let currentMonth = months[currentDate.getMonth()];
+  let date = currentDate.getDate();
+  
+  return `${currentDay}, ${date}. ${currentMonth} ${currentYear}`;
+}
+
 function formatHours(timestamp){
 let currentDate = new Date(timestamp);
 let currentHour = currentDate.getHours();
@@ -59,29 +72,88 @@ function showCurrentLocation(response) {
   h1.innerHTML = `${currentCity}, ${currentCountry}`;
 }
 
-function displayForecast(response){
+function displayDailyForecast(response){
+  let dailyForecast = document.querySelector("#daily-forecasts");
+  dailyForecast.innerHTML = null;
+  let forecast = null;
+  forecast = response.data.list[7];
+    dailyForecast.innerHTML = `
+    <div class="  day-1">
+        ${formatDays(forecast.dt * 1000)}
+        <img
+            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt="">
+          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+    </div>
+  `;
+
+  forecast = response.data.list[15];
+    dailyForecast.innerHTML = dailyForecast.innerHTML + `
+    <div class="  day-1">
+        ${formatDays(forecast.dt * 1000)}
+        <img
+            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt="">
+          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+    </div>
+  `;
+
+forecast = response.data.list[23];
+    dailyForecast.innerHTML = dailyForecast.innerHTML + `
+    <div class="  day-1">
+        ${formatDays(forecast.dt * 1000)}
+        <img
+            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt="">
+          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+    </div>
+  `;
+
+  forecast = response.data.list[31];
+    dailyForecast.innerHTML = dailyForecast.innerHTML + `
+    <div class="  day-1">
+        ${formatDays(forecast.dt * 1000)}
+        <img
+            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt="">
+          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+    </div>
+  `;
+
+  forecast = response.data.list[39];
+    dailyForecast.innerHTML = dailyForecast.innerHTML + `
+    <div class="  day-1">
+        ${formatDays(forecast.dt * 1000)}
+        <img
+            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt="">
+          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+    </div>
+  `;
+}
+
+function displayHourForecast(response){
   let hourForecast = document.querySelector("#hour-forecasts");
   hourForecast.innerHTML = null;
   let forecast = null;
-
   for(let index = 0; index < 6; index++){
     forecast = response.data.list[index];
     hourForecast.innerHTML += `
     <div class="col-2">
-                <ul>
-                  <li>
-                    ${formatHours(forecast.dt * 1000)}
-                  </li>
-                  <li>
-                    <img
-                    src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-                    alt="">
-                  </li>
-                  <li>
-                    <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
-                  </li>
-                </ul>
-              </div>
+      <ul>
+       <li>
+        ${formatHours(forecast.dt * 1000)}
+       </li>
+       <li>
+         <img
+          src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+          alt="">
+        </li>
+        <li>
+         <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
+      </ul>
+    </div>
               `;
   }
 }
@@ -94,7 +166,8 @@ function searchCity(event){
   axios.get(apiUrl).then(displayWeatherCondition);
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayHourForecast);
+  axios.get(apiUrl).then(displayDailyForecast);
 }
 
 let form = document.querySelector("#search-form");
@@ -115,13 +188,8 @@ function showPosition(position) {
   axios.get(apiUrl).then(showCurrentLocation);
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayHourForecast);
 }
 
 let currentLocationButton = document.querySelector("current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
-
-
-
-
-
