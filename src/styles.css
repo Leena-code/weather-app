@@ -110,35 +110,10 @@ current-location-button:hover {
 }
 
 .today {
-  margin: 60px 70px;
+  margin: 40px 50px;
   font-size: 20px;
   color: #0f3057;
   text-align: center;
-}
-
-.sun-icon {
-  color: yellow;
-  font-size: 30px;
-}
-
-.snowflake-icon {
-  color: white;
-  font-size: 30px;
-}
-
-.cloud-sun-icon {
-  color: lightslategray;
-  font-size: 30px;
-}
-
-.current-cloud-sun-icon {
-  color: lightslategray;
-  font-size: 50px;
-}
-
-.rain-icon {
-  color: darkblue;
-  font-size: 30px;
 }
 
 .forecast {
@@ -156,14 +131,4 @@ current-location-button:hover {
 
 .day-1 {
   border-top: 1.5px solid #00587a;
-  padding: 15px;
-}
-
-.day-2 {
-  border-bottom: 1.5px solid #00587a;
-  padding: 15px;
-}
-
-.day-3 {
-  padding: 15px;
 }

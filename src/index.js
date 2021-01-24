@@ -72,6 +72,32 @@ function showCurrentLocation(response) {
   h1.innerHTML = `${currentCity}, ${currentCountry}`;
 }
 
+function displayHourForecast(response){
+  let hourForecast = document.querySelector("#hour-forecasts");
+  hourForecast.innerHTML = null;
+  let forecast = null;
+  for(let index = 0; index < 6; index++){
+    forecast = response.data.list[index];
+    hourForecast.innerHTML += `
+    <div class="col-2">
+      <ul>
+       <li>
+        ${formatHours(forecast.dt * 1000)}
+       </li>
+       <li>
+         <img
+          src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+          alt="">
+        </li>
+        <li>
+         <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
+      </ul>
+    </div>
+              `;
+  }
+}
+
 function displayDailyForecast(response){
   let dailyForecast = document.querySelector("#daily-forecasts");
   dailyForecast.innerHTML = null;
@@ -132,32 +158,6 @@ forecast = response.data.list[23];
   `;
 }
 
-function displayHourForecast(response){
-  let hourForecast = document.querySelector("#hour-forecasts");
-  hourForecast.innerHTML = null;
-  let forecast = null;
-  for(let index = 0; index < 6; index++){
-    forecast = response.data.list[index];
-    hourForecast.innerHTML += `
-    <div class="col-2">
-      <ul>
-       <li>
-        ${formatHours(forecast.dt * 1000)}
-       </li>
-       <li>
-         <img
-          src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-          alt="">
-        </li>
-        <li>
-         <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
-        </li>
-      </ul>
-    </div>
-              `;
-  }
-}
-
 function searchCity(event){
   event.preventDefault();
   let city = document.querySelector("#search-city").value;
@@ -189,6 +189,7 @@ function showPosition(position) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayHourForecast);
+  axios.get(apiUrl).then(displayDailyForecast);
 }
 
 let currentLocationButton = document.querySelector("current-location-button");
