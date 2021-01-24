@@ -35,6 +35,8 @@ function displayWeatherCondition(response) {
    document.querySelector("h1").innerHTML = response.data.name;
    document.querySelector(".temperature").innerHTML = `${Math.round(response.data.main.temp)}°C`;
    document.querySelector("#description").innerHTML = response.data.weather[0].description;
+   document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+   document.querySelector("#description").setAttribute("alt", `http://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`);
 }
 
 function showCurrentLocation(response) {
