@@ -1,6 +1,4 @@
-let todaysDate = new Date();
-let day = document.querySelector(".day");
-let date = document.querySelector(".date");
+let currentDate = new Date();
 
 function formatTime(dayTime){
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -18,25 +16,40 @@ return `${currentDay},  ${currentHour}:${currentMinutes}`;
 
 }
 
-day.innerHTML = formatTime(todaysDate);
+document.querySelector(".day").innerHTML = formatTime(currentDate);
 
 function formatDate(todaysDate) {
   let currentYear = todaysDate.getFullYear();
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"];
-let currentMonth = months[todaysDate.getMonth()];
-let currentDate = todaysDate.getDate();
-
-return `${currentDate}. ${currentMonth} ${currentYear}`;
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"];
+  let currentMonth = months[todaysDate.getMonth()];
+  let currentDate = todaysDate.getDate();
+  
+  return `${currentDate}. ${currentMonth} ${currentYear}`;
 }
 
-date.innerHTML = formatDate(todaysDate);
+document.querySelector(".date").innerHTML = formatDate(currentDate);
+
+function formatHours(timestamp){
+let currentDate = new Date(timestamp);
+let currentHour = currentDate.getHours();
+if (currentHour < 10) {
+  currentHour = `0${currentHour}`
+}
+let currentMinutes = currentDate.getMinutes();
+if (currentMinutes < 10){
+  currentMinutes = `0${currentMinutes}`
+}
+
+return `${currentHour}:${currentMinutes}`;
+
+}
 
 function displayWeatherCondition(response) {
    document.querySelector("h1").innerHTML = response.data.name;
-   document.querySelector(".temperature").innerHTML = `${Math.round(response.data.main.temp)}°C`;
+   document.querySelector(".temperature").innerHTML = `${Math.round(response.data.main.temp)}°`;
    document.querySelector("#description").innerHTML = response.data.weather[0].description;
-   document.querySelector("#current-weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-   document.querySelector("#description").setAttribute("alt", `http://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`);
+   document.querySelector("#current-weather-icon").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+   document.querySelector("#description").setAttribute("alt", `https://openweathermap.org/img/wn/${response.data.weather[0].description}@2x.png`);
 }
 
 function showCurrentLocation(response) {
@@ -46,12 +59,42 @@ function showCurrentLocation(response) {
   h1.innerHTML = `${currentCity}, ${currentCountry}`;
 }
 
+function displayForecast(response){
+  let hourForecast = document.querySelector("#hour-forecasts");
+  hourForecast.innerHTML = null;
+  let forecast = null;
+
+  for(let index = 0; index < 6; index++){
+    forecast = response.data.list[index];
+    hourForecast.innerHTML += `
+    <div class="col-2">
+                <ul>
+                  <li>
+                    ${formatHours(forecast.dt * 1000)}
+                  </li>
+                  <li>
+                    <img
+                    src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+                    alt="">
+                  </li>
+                  <li>
+                    <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+                  </li>
+                </ul>
+              </div>
+              `;
+  }
+}
+
 function searchCity(event){
   event.preventDefault();
   let city = document.querySelector("#search-city").value;
   let apiKey = `806f99d0661b04444ade3ca9ef0a7b55`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let form = document.querySelector("#search-form");
