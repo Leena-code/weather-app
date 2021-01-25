@@ -31,11 +31,11 @@ document.querySelector(".date").innerHTML = formatDate(currentDate);
 
 function formatDays(timestamp){
   let currentDate = new Date(timestamp);
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let currentDay = days[currentDate.getDay()];
 
   let currentYear = currentDate.getFullYear();
-  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "Oktober", "November", "December"];
+  let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
   let currentMonth = months[currentDate.getMonth()];
   let date = currentDate.getDate();
   
@@ -87,7 +87,7 @@ function displayHourForecast(response){
        <li>
          <img
           src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-          alt="">
+          alt="" class="hour-forecast-icon">
         </li>
         <li>
          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
@@ -104,55 +104,65 @@ function displayDailyForecast(response){
   let forecast = null;
   forecast = response.data.list[7];
     dailyForecast.innerHTML = `
-    <div class="  day-1">
+    <div class="day-1">
+    <strong>
         ${formatDays(forecast.dt * 1000)}
+        </strong>
         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="">
+            alt="" class="daily-forecast-icon">
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
     </div>
   `;
 
   forecast = response.data.list[15];
     dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="  day-1">
+    <div class="day-1">
+        <strong>
         ${formatDays(forecast.dt * 1000)}
+        </strong>
         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="">
+            alt="" class="daily-forecast-icon">
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
     </div>
   `;
 
 forecast = response.data.list[23];
     dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="  day-1">
+    <div class=" day-1">
+        <strong>
         ${formatDays(forecast.dt * 1000)}
+        </strong>
         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="">
+            alt="" class="daily-forecast-icon">
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
     </div>
   `;
 
   forecast = response.data.list[31];
     dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="  day-1">
+    <div class="day-1">
+        <strong>
         ${formatDays(forecast.dt * 1000)}
+        </strong>
         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="">
+            alt="" class="daily-forecast-icon">
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
     </div>
   `;
 
   forecast = response.data.list[39];
     dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="  day-1">
+    <div class="day-1">
+        <strong>
         ${formatDays(forecast.dt * 1000)}
+        </strong>
         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="">
+            alt="" class="daily-forecast-icon">
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
     </div>
   `;
