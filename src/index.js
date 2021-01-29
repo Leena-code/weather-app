@@ -31,15 +31,21 @@ document.querySelector(".date").innerHTML = formatDate(currentDate);
 
 function formatDays(timestamp){
   let currentDate = new Date(timestamp);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let currentDay = days[currentDate.getDay()];
 
-  let currentYear = currentDate.getFullYear();
+  
+  return `${currentDay}`;
+}
+
+function formatDates(timestamp){
+  let currentDate = new Date(timestamp);
+let currentYear = currentDate.getFullYear();
   let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
   let currentMonth = months[currentDate.getMonth()];
   let date = currentDate.getDate();
   
-  return `${currentDay}, ${date}. ${currentMonth} ${currentYear}`;
+  return `${date}. ${currentMonth} ${currentYear}`;
 }
 
 function formatHours(timestamp){
@@ -69,7 +75,7 @@ function showCurrentLocation(response) {
   let currentCity = response.data.name;
   let currentCountry = response.data.sys.country;
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `${currentCity}, ${currentCountry}`;
+  h1.innerHTML = `${currentCity} ${currentCountry}`;
 }
 
 function displayHourForecast(response){
@@ -82,7 +88,9 @@ function displayHourForecast(response){
     <div class="col-2">
       <ul>
        <li>
-        ${formatHours(forecast.dt * 1000)}
+        <strong>
+         ${formatHours(forecast.dt * 1000)}
+        </strong>
        </li>
        <li>
          <img
@@ -104,66 +112,90 @@ function displayDailyForecast(response){
   let forecast = null;
   forecast = response.data.list[7];
     dailyForecast.innerHTML = `
-    <div class="day-1">
-    <strong>
-        ${formatDays(forecast.dt * 1000)}
-        </strong>
-        <img
+    <div class="col-3 day-1">
+      <ul>
+        <li>
+          <strong>
+            ${formatDays(forecast.dt * 1000)}
+          </strong>
+        </li>
+        <li>
+        ${formatDates(forecast.dt * 1000)}
+        </li>
+        <li>
+         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt="" class="daily-forecast-icon">
+        </li>
+        <li>
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
     </div>
   `;
-
   forecast = response.data.list[15];
-    dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="day-1">
-        <strong>
-        ${formatDays(forecast.dt * 1000)}
-        </strong>
-        <img
+    dailyForecast.innerHTML += `
+    <div class="col-3 day-2">
+      <ul>
+        <li>
+          <strong>
+            ${formatDays(forecast.dt * 1000)}
+          </strong>
+        </li>
+        <li>
+        ${formatDates(forecast.dt * 1000)}
+        </li>
+        <li>
+         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt="" class="daily-forecast-icon">
+        </li>
+        <li>
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
     </div>
   `;
-
-forecast = response.data.list[23];
-    dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class=" day-1">
-        <strong>
-        ${formatDays(forecast.dt * 1000)}
-        </strong>
-        <img
+  forecast = response.data.list[23];
+    dailyForecast.innerHTML += `
+    <div class="col-3 day-1">
+      <ul>
+        <li>
+          <strong>
+            ${formatDays(forecast.dt * 1000)}
+          </strong>
+        </li>
+        <li>
+        ${formatDates(forecast.dt * 1000)}
+        </li>
+        <li>
+         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt="" class="daily-forecast-icon">
+        </li>
+        <li>
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
     </div>
   `;
-
   forecast = response.data.list[31];
-    dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="day-1">
-        <strong>
-        ${formatDays(forecast.dt * 1000)}
-        </strong>
-        <img
+    dailyForecast.innerHTML += `
+    <div class="col-3 day-3">
+      <ul>
+        <li>
+          <strong>
+            ${formatDays(forecast.dt * 1000)}
+          </strong>
+        </li>
+        <li>
+        ${formatDates(forecast.dt * 1000)}
+        </li>
+        <li>
+         <img
             src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt="" class="daily-forecast-icon">
+        </li>
+        <li>
           <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
-    </div>
-  `;
-
-  forecast = response.data.list[39];
-    dailyForecast.innerHTML = dailyForecast.innerHTML + `
-    <div class="day-1">
-        <strong>
-        ${formatDays(forecast.dt * 1000)}
-        </strong>
-        <img
-            src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
-            alt="" class="daily-forecast-icon">
-          <strong>${Math.round(forecast.main.temp_max)}°</strong> ${Math.round(forecast.main.temp_min)}°
+        </li>
     </div>
   `;
 }

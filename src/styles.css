@@ -121,10 +121,32 @@ current-location-button:hover {
 }
 
 .day-1 {
+  border: 1.5px solid #00587a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.day-2 {
   border-top: 1.5px solid #00587a;
-  color: #0f3057;
+  border-bottom: 1.5px solid #00587a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.day-3 {
+  border-top: 1.5px solid #00587a;
+  border-bottom: 1.5px solid #00587a;
+  border-right: 1.5px solid #00587a;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 17px;
 }
 
 .daily-forecast-icon {
-  padding: 0px 150px;
+  width: 70%;
 }
